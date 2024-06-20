@@ -86,7 +86,7 @@ class Bigram:
         loss = -probs[torch.arange(len(xs)), ys].log().mean() + 0.01 * (self.W ** 2).mean()
         return loss.item()
 
-    def train_model(self, learning_rate=10, epochs=500):
+    def train(self, learning_rate=10, epochs=500):
         """
         Trains the bigram model using stochastic gradient descent.
 
@@ -108,7 +108,7 @@ class Bigram:
             loss.backward()
             self.W.data -= learning_rate * self.W.grad
 
-    def sample_model(self, sample_size=10):
+    def sample(self, sample_size=10):
         """
         Generates samples from the trained bigram model.
 
