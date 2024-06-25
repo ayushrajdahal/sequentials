@@ -52,17 +52,6 @@ class CNN(nn.Module):
         x = self.fc(x.mean(dim=2))  # Global average pooling over time dimension
         return x
     
-    def parameters(self):
-        """
-        Returns model parameters for optimization.
-
-        Returns:
-            list: List of model parameters.
-        """
-        return list(self.embedding.parameters()) + list(self.conv1.parameters()) + \
-               list(self.conv2.parameters()) + list(self.conv3.parameters()) + \
-               list(self.fc.parameters())
-    
     def build_dataset(self, words, block_size=8):
         """
         Builds the dataset for training.
@@ -92,7 +81,7 @@ class CNN(nn.Module):
             max_steps (int): Maximum number of training steps (default: 200000).
             batch_size (int): Size of each minibatch (default: 32).
         """
-        optimizer = torch.optim.SGD(self.parameters(), lr=0.1)
+        optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
         criterion = nn.CrossEntropyLoss()
         
         loss_log = []
