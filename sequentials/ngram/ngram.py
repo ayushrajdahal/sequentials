@@ -27,7 +27,7 @@ class Ngram:
         self.mid_layer_dim = mid_layer_dim
         self.learning_rate = learning_rate
         
-        self.idx_to_str = {i: s for i, s in enumerate(["."] + sorted(list(set(''.join(names)))))}
+        self.idx_to_str = {i: s for i, s in enumerate(sorted(list(set(''.join(names)))))}
         self.str_to_idx = {s: i for i, s in self.idx_to_str.items()}
         
         self.generator = torch.Generator().manual_seed(seed)

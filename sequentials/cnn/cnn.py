@@ -62,7 +62,6 @@ class CNN(nn.Module):
         """
         X, Y = [], []
         stoi = {s: i+1 for i, s in enumerate(sorted(list(set(''.join(words)))))}
-        stoi['.'] = 0
         for w in words:
             context = [0] * block_size
             for ch in w + '.':

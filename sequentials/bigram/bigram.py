@@ -39,7 +39,7 @@ class Bigram:
             - index_to_str : dict
                 Mapping from index to character.
         """
-        chars = ['.'] + sorted(list(set(''.join(words))))
+        chars = sorted(list(set(''.join(words))))
         str_to_index = {s: i for i, s in enumerate(chars)}
         index_to_str = {i: s for s, i in str_to_index.items()}
         return str_to_index, index_to_str
